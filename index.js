@@ -11,16 +11,18 @@ massive( process.env.CONNECTION_STRING ).then(dbInstance =>  {
 
 // dbInstance.new_planes()
 // .then( planes => console.log( planes ) )
-// .catcH(err => console.log( err ));
+// .catch(err => console.log( err ));
 
 // dbInstance.get_planes()
 //     .then( planes => console.log( planes ))
 //     .catch( err => console.log( err ) );
-
+ 
 });
 
 app.use( bodyParser.json() );
 app.use( cors() );
+
+app.get('/api/planes', controller.getPlanes);
 
 const port = process.env.PORT || 3000
 app.listen( port , () => { console.log(`Server listening on port ${port}`); } );
